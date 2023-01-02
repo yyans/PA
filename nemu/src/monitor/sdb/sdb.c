@@ -54,6 +54,24 @@ static int cmd_q(char *args) {
 
 static int cmd_help(char *args);
 
+/**
+ * @description: 单步执行命令
+ * @param {char} *args
+ * @return {*}
+ */
+static int cmd_s(char *args) {
+  int n = 1;
+  if (args) {
+    n = atoi(args);
+  }
+  if (n == 0) {
+    printf("error: si [number]\n");
+    return 0;
+  }
+  execute(n);
+  return 0;
+}
+
 static struct {
   const char *name;
   const char *description;
@@ -62,7 +80,7 @@ static struct {
   { "help", "Display information about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
-
+  { "s", "step the command", cmd_s},
   /* TODO: Add more commands */
 
 };
