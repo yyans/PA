@@ -55,9 +55,9 @@ static int cmd_q(char *args) {
 static int cmd_help(char *args);
 
 /**
- * @description: 单步执行命令
- * @param {char} *args
- * @return {*}
+ * @description: 单步执行命令，具体执行几条命令看参数，不加参数默认为1
+ * @param {char} *args 应该为数字，即执行数目
+ * @return 返回0 暂时不知道返回值有什么用 但上面的函数都加了返回值我就加了
  */
 static int cmd_s(char *args) {
   int n = 1;
