@@ -1,11 +1,3 @@
-/*
- * @Author: yyans 1955098530@qq.com
- * @Date: 2022-12-29 21:55:10
- * @LastEditors: yyans 1955098530@qq.com
- * @LastEditTime: 2023-01-02 17:40:35
- * @FilePath: /ics2022/nemu/src/isa/riscv64/local-include/reg.h
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
- */
 /***************************************************************************************
 * Copyright (c) 2014-2022 Zihao Yu, Nanjing University
 *
