@@ -85,10 +85,10 @@ static int cmd_x(char *args) {
 
   if (arg1 && arg2) {
     int n = atoi(arg1);
-    vaddr_t start_address = atoi(arg2);
+    vaddr_t start_address = atol(arg2);
     for(int i = 0; i < n; i++) {
       word_t val = vaddr_read(start_address, 4);
-      printf("0x%lx:", start_address);
+      printf("0x%08lx:", start_address);
       printf("0x%08lx\n", val);
       start_address += 4;
     }
