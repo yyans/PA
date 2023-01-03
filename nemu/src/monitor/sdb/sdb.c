@@ -18,6 +18,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 #include "sdb.h"
+#include "../include/memory/vaddr.h"
 
 static int is_batch_mode = false;
 
@@ -78,19 +79,23 @@ static int cmd_info(char *args) {
   return 0;
 }
 
-// static int cmd_x(char *args) {
-//   char *arg1 = strtok(NULL, " ");
-//   char *arg2 = strtok(NULL, " ");
+static int cmd_x(char *args) {
+  char *arg1 = strtok(NULL, " ");
+  char *arg2 = strtok(NULL, " ");
 
-//   if (arg1 && arg2) {
-//     int n = atoi(arg1);
-//     vaddr_t start_address = atoi(arg2);
-//     for(int i = 0; i < n; i++) {
-//       word_t val = vaddr_read(start_address, 4);
-//       start_address += 4;
-//     }
-//   }
-// }
+  if (arg1 && arg2) {
+    int n = atoi(arg1);
+    vaddr_t start_address = atoi(arg2);
+    for(int i = 0; i < n; i++) {
+      word_t val = vaddr_read(start_address, 4);
+      // printf("%-16x:", start_address);
+      printf("0x%-4lx", val);
+      
+      start_address += 4;
+    }
+  }
+  return 0;
+}
 
 static struct {
   const char *name;
@@ -102,6 +107,7 @@ static struct {
   { "q", "Exit NEMU", cmd_q },
   { "s", "step the command", cmd_s},
   { "info", "print infomation(default: register)", cmd_info},
+  { "x", "execute commands", cmd_x},
   /* TODO: Add more commands */
 
 };
