@@ -89,7 +89,7 @@ static int cmd_x(char *args) {
     for(int i = 0; i < n; i++) {
       word_t val = vaddr_read(start_address, 4);
       // printf("%-16x:", start_address);
-      printf("0x%-80lx\n", val);
+      printf("0x%8lx\n", val);
       
       start_address += 4;
     }
