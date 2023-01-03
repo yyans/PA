@@ -87,11 +87,11 @@ static int cmd_x(char *args) {
     int n = atoi(arg1);
     vaddr_t start_address = atoi(arg2);
     for(int i = 0; i < n; i++) {
-      word_t val = vaddr_read(start_address, 4);
+      word_t val = vaddr_read(start_address, 1);
       // printf("%-16x:", start_address);
       printf("0x%-4lx", val);
       
-      start_address += 4;
+      start_address += 1;
     }
   }
   return 0;
