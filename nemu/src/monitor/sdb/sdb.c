@@ -57,6 +57,7 @@ static int cmd_help(char *args);
 
 /**
  * 单步执行
+ * si [N]
 */
 static int cmd_s(char *args) {
   uint64_t n = 1;
@@ -67,18 +68,24 @@ static int cmd_s(char *args) {
     printf("error: si [number]\n");
     return 0;
   }
-  execute(n);
+  // execute(n);
+  cpu_exec(1);
   return 0;
 }
 
 /**
  * 打印寄存器
+ * info
 */
 static int cmd_info(char *args) {
   isa_reg_display();
   return 0;
 }
 
+/**
+ * 打印内存
+ * x [N] [address]
+*/
 static int cmd_x(char *args) {
   char *arg1 = strtok(NULL, " ");
   char *arg2 = strtok(NULL, " ");
@@ -88,7 +95,7 @@ static int cmd_x(char *args) {
     vaddr_t start_address = atol(arg2);
     for(int i = 0; i < n; i++) {
       word_t val = vaddr_read(start_address, 4);
-      printf("0x%08lx:  ", start_address);
+      printf("0x%08lx:", start_address);
       printf("0x%08lx\n", val);
       start_address += 4;
     }
