@@ -92,7 +92,7 @@ static int cmd_x(char *args) {
 
   if (arg1 && arg2) {
     int n = atoi(arg1);
-    vaddr_t start_address = atol(arg2);
+    vaddr_t start_address = strtol(arg2, NULL, 16);
     for(int i = 0; i < n; i++) {
       word_t val = vaddr_read(start_address, 4);
       printf("0x%016lx:", start_address);
