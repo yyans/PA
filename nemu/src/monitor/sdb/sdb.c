@@ -55,12 +55,10 @@ static int cmd_q(char *args) {
 static int cmd_help(char *args);
 
 /**
- * @description: 单步执行命令，具体执行几条命令看参数，不加参数默认为1
- * @param {char} *args 应该为数字，即执行数目
- * @return 返回0 暂时不知道返回值有什么用 但上面的函数都加了返回值我就加了
- */
+ * 单步执行
+*/
 static int cmd_s(char *args) {
-  int n = 1;
+  uint64_t n = 1;
   if (args) {
     n = atoi(args);
   }
@@ -72,10 +70,27 @@ static int cmd_s(char *args) {
   return 0;
 }
 
+/**
+ * 打印寄存器
+*/
 static int cmd_info(char *args) {
   isa_reg_display();
   return 0;
 }
+
+// static int cmd_x(char *args) {
+//   char *arg1 = strtok(NULL, " ");
+//   char *arg2 = strtok(NULL, " ");
+
+//   if (arg1 && arg2) {
+//     int n = atoi(arg1);
+//     vaddr_t start_address = atoi(arg2);
+//     for(int i = 0; i < n; i++) {
+//       word_t val = vaddr_read(start_address, 4);
+//       start_address += 4;
+//     }
+//   }
+// }
 
 static struct {
   const char *name;
@@ -95,7 +110,7 @@ static struct {
 
 static int cmd_help(char *args) {
   /* extract the first argument */
-  char *arg = strtok(args, " ");
+  char *arg = strtok(NULL, " ");
   int i;
 
   if (arg == NULL) {
